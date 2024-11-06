@@ -7,4 +7,4 @@ rm -r md_fls_dataset
 mv BoxAnnotations annotations
 mv Images images
 cd ..
-python data_tools.py
+# python data_tools.py
