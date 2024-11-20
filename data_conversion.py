@@ -58,6 +58,6 @@ def process_annotations(input_dir, output_dir):
             print(f"Processed and saved: {annotation_file}")
 
 # Example usage
-input_dir = "C:/Users/ces20/OneDrive/Desktop/Computer-Vision-Final-Project/marine_debris_data/annotations"  # Replace with the directory containing your annotation XML files
-output_dir = "newAnnotations"  # Replace with the desired output directory
-process_annotations(input_dir, output_dir)
+# input_dir = "./marine_debris_data/annotations"  # Replace with the directory containing your annotation XML files
+# output_dir = "newAnnotations"  # Replace with the desired output directory
+# process_annotations(input_dir, output_dir)

@@ -13,13 +13,12 @@ class CustomDataset(Dataset):
         self.annotations_files = sorted(os.listdir(annotations_dir))
         self.transform = transform
 
-
     def __len__(self):
         return len(self.image_files)
 
     def __getitem__ (self, idx):
         img_path = os.path.join(self.images_dir, self.image_files[idx])
-        img = Image.open(img_path).convert("RGB")
+        img = Image.open(img_path)
 
         annotation_path = os.path.join(self.annotations_dir, self.annotation_files[idx])
         objects = convert_to_voc_format(annotation_path)
