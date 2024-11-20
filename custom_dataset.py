@@ -3,7 +3,7 @@ from torch.utils.data import Dataset
 from PIL import Image
 import xml.etree.ElementTree as ET
 import os
-from convertData import convert_to_voc_format
+from data_conversion import convert_to_voc_format
 
 class CustomDataset(Dataset):
     def __init__(self, images_dir, annotations_dir, transform=None):
@@ -16,7 +16,7 @@ class CustomDataset(Dataset):
 
     def __len__(self):
         return len(self.image_files)
-    
+
     def __getitem__ (self, idx):
         img_path = os.path.join(self.images_dir, self.image_files[idx])
         img = Image.open(img_path).convert("RGB")
@@ -29,11 +29,11 @@ class CustomDataset(Dataset):
         for obj in objects:
             boxes.append([obj['xmin'], obj['ymin'], obj['xmax'], obj['ymax']])
             labels.append(class_map[obj['name']])
-        
+
         boxes = torch.as_tensor(boxes, dtype=torch.float32)
         labels = torch.as_tensor(labels, dtype=torch.int64)
 
-        target = {"boxes": boxes, "labels": labels}    
+        target = {"boxes": boxes, "labels": labels}
         if self.transform:
             img = self.transform(img)
 

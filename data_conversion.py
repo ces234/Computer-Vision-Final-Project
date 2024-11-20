@@ -24,12 +24,12 @@ def convert_to_voc_format(annotation_file):
 def save_as_voc_format(objects, output_file):
     # Create the root XML structure
     annotation = ET.Element('annotation')
-    
+
     for obj in objects:
         object_element = ET.SubElement(annotation, 'object')
         name_element = ET.SubElement(object_element, 'name')
         name_element.text = obj['name']
-        
+
         bndbox_element = ET.SubElement(object_element, 'bndbox')
         xmin_element = ET.SubElement(bndbox_element, 'xmin')
         xmin_element.text = str(obj['xmin'])
