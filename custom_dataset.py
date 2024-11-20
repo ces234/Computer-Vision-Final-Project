@@ -6,7 +6,7 @@ import os
 from data_conversion import convert_to_voc_format
 
 class CustomDataset(Dataset):
-    def __init__(self, images_dir, annotations_dir, transform=None):
+    def __init__(self, images_dir: str, annotations_dir: str, transform=None):
         self.images_dir = images_dir
         self.annotations_dir = annotations_dir
         self.image_files = sorted(os.listdir(images_dir))
