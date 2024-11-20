@@ -20,7 +20,7 @@ class CustomDataset(Dataset):
         img_path = os.path.join(self.images_dir, self.image_files[idx])
         img = Image.open(img_path)
 
-        annotation_path = os.path.join(self.annotations_dir, self.annotation_files[idx])
+        annotation_path = os.path.join(self.annotations_dir, self.annotations_files[idx])
         objects = convert_to_voc_format(annotation_path)
 
         boxes = []
