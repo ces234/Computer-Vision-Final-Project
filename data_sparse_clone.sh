@@ -7,4 +7,9 @@ rm -r md_fls_dataset
 mv BoxAnnotations annotations
 mv Images images
 cd ..
-python data_tools.py
+
+echo RENAMING 
+python data_tools.py marine_debris_data --rename
+
+echo SCALING
+python data_tools.py marine_debris_data --scale
