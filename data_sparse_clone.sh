@@ -8,7 +8,7 @@ mv BoxAnnotations annotations
 mv Images images
 cd ..
 
-echo RENAMING 
+echo RENAMING
 python data_tools.py marine_debris_data --rename
 
 echo SCALING
