@@ -66,8 +66,6 @@ def scale_xml(dir_path: Path, target_width: int, target_height: int):
 
         tree.write(file_path)
 
-        print(current_width, current_height)
-
 if __name__ == '__main__':
     parser = ArgumentParser(description='Process data to get it ready for use in training')
     parser.add_argument('dir', type=str, help='The local path to the directory containing "annotations" and "images" folders')
@@ -87,6 +85,6 @@ if __name__ == '__main__':
 
     if args.scale:
         print('Scaling images...')
-        # scale_images(data_dir / 'images', IMG_WIDTH, IMG_HEIGHT)
+        scale_images(data_dir / 'images', IMG_WIDTH, IMG_HEIGHT)
         print('Scaling XML...')
         scale_xml(data_dir / 'annotations', IMG_WIDTH, IMG_HEIGHT)
