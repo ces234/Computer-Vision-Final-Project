@@ -10,11 +10,11 @@
 #SBATCH --nodelist=classt07,classt08   # Specify idle nodes (modify based on availability)
 # Load necessary modules
 module load Python/3.12.3-GCCcore-13.3.0
-module load cuda/11.3.1
+module load CUDA/11.3.1
 export PYTHONUSERBASE=$HOME/.usr/local/python/3.12.3
 
 # Activate virtual environment (if created)
 # source ~/myenv/bin/activate
 
 # Run the Python script
-python ~/Computer-Vision-Final-Project/fcos/fcos.py
+python ~/Computer-Vision-Final-Project/fcos/fcos_train.py

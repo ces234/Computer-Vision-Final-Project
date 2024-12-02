@@ -30,9 +30,29 @@ Then install Torch/CUDA from example instructions [here](https://sites.google.co
 Other helpful links:
  - https://sites.google.com/a/case.edu/hpcc/hpc-cluster/markov-software/programming-computing-languages/python2-python3/python-virtual-environments
  - https://sites.google.com/a/case.edu/hpcc/guides-and-training/helpful-references/hpc-environment/batch-job-interactive-job-submissions?authuser=0
+ - [Markov web portal](https://ondemand.case.edu) (good for transferring files)
+
+Run slurm:
 
 ```bash
 sbatch fcos.slurm
+```
+
+```bash
 squeue --me
+scancel <job-id-from-squeue>
+```
+
+See [JOB STATE CODES](https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES) for what `ST` means.
+
+```bash
 cat training_output.log
+# OR
+tail -f training_output.log
+```
+
+Or run interactive shell:
+
+```bash
+srun --mem=8gb -A yxy1421_csds465 -p markov_gpu --gres=gpu:1 --pty /bin/bash
 ```
