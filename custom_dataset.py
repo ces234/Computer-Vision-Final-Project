@@ -4,14 +4,27 @@ from PIL import Image
 import xml.etree.ElementTree as ET
 import os
 from data_conversion import convert_to_voc_format
+from torchvision.transforms import ToTensor
+import math
+
+TRAIN_FRACTION = 0.7
 
 class CustomDataset(Dataset):
-    def __init__(self, images_dir: str, annotations_dir: str, transform=None):
+    def __init__(self, images_dir: str, annotations_dir: str, train_set: bool = True, transform=None):
         self.images_dir = images_dir
         self.annotations_dir = annotations_dir
         self.image_files = sorted(os.listdir(images_dir))
         self.annotations_files = sorted(os.listdir(annotations_dir))
-        self.transform = transform
+
+        train_size = math.floor(len(self.image_files) * TRAIN_FRACTION)
+        test_size = len(self.image_files) - train_size
+        if train_set:
+            self.image_files = self.image_files[:train_size]
+            self.annotations_files = self.annotations_files[:train_size]
+        else:
+            self.image_files = self.image_files[-test_size:]
+            self.annotations_files = self.annotations_files[-test_size:]
+        self.transform = transform or ToTensor()
 
     def __len__(self):
         return len(self.image_files)
