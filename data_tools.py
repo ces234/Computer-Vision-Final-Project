@@ -87,6 +87,6 @@ if __name__ == '__main__':
 
     if args.scale:
         print('Scaling images...')
-        # scale_images(data_dir / 'images', IMG_WIDTH, IMG_HEIGHT)
+        scale_images(data_dir / 'images', IMG_WIDTH, IMG_HEIGHT)
         print('Scaling XML...')
         scale_xml(data_dir / 'annotations', IMG_WIDTH, IMG_HEIGHT)

@@ -4,6 +4,8 @@ from PIL import Image
 import xml.etree.ElementTree as ET
 import os
 from data_conversion import convert_to_voc_format
+from torchvision.transforms import ToTensor
+
 
 class CustomDataset(Dataset):
     def __init__(self, images_dir, annotations_dir, transform=None):
@@ -11,7 +13,7 @@ class CustomDataset(Dataset):
         self.annotations_dir = annotations_dir
         self.image_files = sorted(os.listdir(images_dir))
         self.annotations_files = sorted(os.listdir(annotations_dir))
-        self.transform = transform
+        self.transform = transform or ToTensor()  # Default to ToTensor if no transform provided
 
 
     def __len__(self):
@@ -19,9 +21,9 @@ class CustomDataset(Dataset):
 
     def __getitem__ (self, idx):
         img_path = os.path.join(self.images_dir, self.image_files[idx])
-        img = Image.open(img_path).convert("RGB")
+        img = Image.open(img_path)
 
-        annotation_path = os.path.join(self.annotations_dir, self.annotation_files[idx])
+        annotation_path = os.path.join(self.annotations_dir, self.annotations_files[idx])
         objects = convert_to_voc_format(annotation_path)
 
         boxes = []

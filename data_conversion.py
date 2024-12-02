@@ -57,7 +57,7 @@ def process_annotations(input_dir, output_dir):
             save_as_voc_format(objects, output_path)
             print(f"Processed and saved: {annotation_file}")
 
-# Example usage
-input_dir = "C:/Users/ces20/OneDrive/Desktop/Computer-Vision-Final-Project/marine_debris_data/annotations"  # Replace with the directory containing your annotation XML files
-output_dir = "newAnnotations"  # Replace with the desired output directory
-process_annotations(input_dir, output_dir)
+# # Example usage
+# input_dir = "C:/Users/ces20/OneDrive/Desktop/Computer-Vision-Final-Project/marine_debris_data/annotations"  # Replace with the directory containing your annotation XML files
+# output_dir = "newAnnotations"  # Replace with the desired output directory
+# process_annotations(input_dir, output_dir)
